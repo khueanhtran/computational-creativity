@@ -105,9 +105,9 @@ class PatternVisualizer:
      
     def draw_pattern(self, pattern):
         x1 = 250
-        y1 = 70
+        y1 = 40
         x2 = 280
-        y2 = 140
+        y2 = 110
         width = x2 - x1
         height = y2 - y1
          
@@ -235,19 +235,18 @@ def main():
             stitches.append(f"{stitch[0]} ({stitch[1]})")
         str = ', '.join(stitches)
         if num % 2 == 0:
-            print(f"Row {num} (l-->r): {str}")
+            print(f"Row {num+1} (l-->r): {str}")
         else:
-            print(f"Row {num} (r-->l): {str}")
+            print(f"Row {num+1} (r-->l): {str}")
 
 
-    master = Tk()
-    visualizer = PatternVisualizer(master)
+    window = Tk()
+    visualizer = PatternVisualizer(window)
     
     visualizer.draw_pattern(pattern)
 
-    # Sets the geometry and position
-    # of window on the screen
-    master.geometry("800x1000+350+0")
+    window.title("Generated Crochet Pattern")
+    window.geometry("800x1000+350+0")
  
     # Infinite loop breaks only by interrupt
     mainloop()
