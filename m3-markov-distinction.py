@@ -75,7 +75,7 @@ class MarkovCrochet:
                     random_vals = np.random.rand(len(self.colours))
                     probs = random_vals / sum(random_vals)
                     new_colour = curr_colour
-                    while new_colour == curr_colour: # to prevent the same colour from being picked
+                    while new_colour == curr_colour: # to prevent the current colour from being picked again
                         new_colour = np.random.choice(self.colours, p=probs)
                     curr_colour = new_colour
                 else:
@@ -181,7 +181,10 @@ def main():
     size = input()
     print("\n")
 
-    print(f"What stitches would you like to use? Type 'done' when you have finished selecting. {STITCHES}\n")
+    print(f"What stitches would you like to use? Type 'done' when you have finished selecting.")
+    print("'sc' for single crochet")
+    print("'dc' for double crochet")
+    print("'tc' for triple crochet\n")
     stitches = []
     stitches_done = False
     while not stitches_done:
@@ -225,8 +228,16 @@ def main():
     print(f"Stitches used: {stitches}\n")
     print(f"Colours used: {colours}\n")
 
-    for row in pattern:
-        print(row)
+    for num in range(0, len(pattern)):
+        row = pattern[num]
+        stitches = []
+        for stitch in row:
+            stitches.append(f"{stitch[0]} ({stitch[1]})")
+        str = ', '.join(stitches)
+        if num % 2 == 0:
+            print(f"Row {num} (l-->r): {str}")
+        else:
+            print(f"Row {num} (r-->l): {str}")
 
 
     master = Tk()
