@@ -190,8 +190,9 @@ class PatternVisualizer:
                         self.canvas.create_oval(x1-8, y1, x2+8, y1+10, outline=colour, fill=colour, width=2)
                         self.canvas.create_oval(x1-8, y2, x2+8, y2+10, outline=colour, fill=colour, width=2)
                 
+                
                 if idx == len(curr_row) - 1: # don't update x-coordinates if going to new row
-                    continue
+                    continue # first stitch of new row needs to align vertically of last stitch of previous row
                 elif i % 2 == 0: # if index is even, it is an odd row and thus going from left to right 
                     x1 = x1 + width
                     x2 = x2 + width
